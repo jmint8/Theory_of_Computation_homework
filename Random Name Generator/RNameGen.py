@@ -1,6 +1,8 @@
 import random
 #  Homework Random Name Generator
+# idk why but it doesn't compile in VS code but it does in idle shell
 '''
+the grammar is defined as follows:
 G = (V, ∑, S, P)
 V = {S, X, Y, Z}
 ∑ = { Adjectives, Nouns, and, the, of}
