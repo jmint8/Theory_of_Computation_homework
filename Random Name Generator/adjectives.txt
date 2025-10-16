@@ -1,0 +1,6 @@
+small
+large
+firey
+smokey
+black
+red

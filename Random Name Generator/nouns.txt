@@ -1,0 +1,4 @@
+castle
+desert
+bog
+Warrior
