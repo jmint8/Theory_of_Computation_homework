@@ -65,7 +65,10 @@ if __name__ == "__main__":
     def main():
         nouns = "nouns.txt"
         adjectives = "adjectives.txt"
-        noun_list,adj_list = read_files_intrinsic(adjectives,nouns)
+        #noun_list,adj_list = read_files_intrinsic(adjectives,nouns)
+        noun_list = readfile(nouns)
+        adj_list = readfile(adjectives)
+
         gen_name = generate_name(noun_list,adj_list)
         print(gen_name)
         print("Goodbye!")
