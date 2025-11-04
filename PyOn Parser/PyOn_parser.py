@@ -1,10 +1,22 @@
 #!/usr/bin/python3
 #
 # definition of Grammar for PyOn 
+# non-terminals are represented by uppercase letters
+# S is the staring state. X represents an object. Y represents a key. Z represents a value.
+# L represents a list. V represents values. O represents an object. I represents an integer.
+# F represents a float. B represents a boolean. W represents a string. 
+# 
+#
 #
 # S -> { X }
 # X -> X , X | Y : Z 
-# Y -> ""
+# Y -> w
+# Z -> L | O | I | F | B | W
+# L -> [ V ]
+# V -> V , V | Z | ε
+# O -> { X }
+# W -> 
+# I -> 
 
 
 
