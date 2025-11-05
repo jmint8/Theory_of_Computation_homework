@@ -7,7 +7,6 @@
 # F represents a float. B represents a boolean. W represents a string. 
 # 
 #
-#
 # S -> { X }
 # X -> X , X | Y : Z 
 # Y -> w
@@ -15,8 +14,21 @@
 # L -> [ V ]
 # V -> V , V | Z | ε
 # O -> { X }
-# W -> 
-# I -> 
+# W -> "C"
+# B -> true | false
+# I -> TG
+# C -> aC | bC | cC |... | AC |... | ZC | ε
+# G -> 0G |... | 9G | ε
+# F -> TQ
+# Q -> G.G | G.GeTG
+# J -> Ni | NRHi
+# H -> G | Q
+# N -> TG | TQ
+# T -> R | ε
+# R -> + | -
+
+
+
 
 
 
