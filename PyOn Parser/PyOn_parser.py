@@ -8,7 +8,9 @@
 # T represents a sign. R represents + or -. H represents a number (integer or float). N represents a number. 
 # J represents a complex number. Q represents the form of floats.
 # 
-#
+"""
+
+
 # S -> { X }
 # X -> X , X | Y : Z 
 # Y -> w
@@ -28,17 +30,16 @@
 # N -> TG | TQ
 # T -> R | ε
 # R -> + | -
+"""
 
 
+DESCRIPTION = ''' A homebrew JSON parser which extends standard JSON with sets and complex numbers. '''
 
-DESCRIPTION = '''
-A homebrew JSON parser which extends standard JSON with sets and complex numbers.
-'''
 
 import argparse
 import os.path
 
-YOUR_NAME_HERE = "Captain Jack Sparrow" # Replace this with your name.
+YOUR_NAME_HERE = "Mitchel" # Replace this with your name.
 
 
 def parse_file(file_name: str) -> dict:
