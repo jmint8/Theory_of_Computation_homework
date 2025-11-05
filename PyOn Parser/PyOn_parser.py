@@ -4,7 +4,9 @@
 # non-terminals are represented by uppercase letters
 # S is the staring state. X represents an object. Y represents a key. Z represents a value.
 # L represents a list. V represents values. O represents an object. I represents an integer.
-# F represents a float. B represents a boolean. W represents a string. 
+# F represents a float. B represents a boolean. W represents a string. C represents characters. G represents a group of digits. 
+# T represents a sign. R represents + or -. H represents a number (integer or float). N represents a number. 
+# J represents a complex number. Q represents the form of floats.
 # 
 #
 # S -> { X }
@@ -26,14 +28,6 @@
 # N -> TG | TQ
 # T -> R | ε
 # R -> + | -
-
-
-
-
-
-
-
-
 
 
 
