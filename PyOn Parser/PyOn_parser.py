@@ -61,6 +61,7 @@ TOKE_DEX = [
 # STRING must come before TRUE, FALSE, NULL to avoid partial matches
 # SKIP must come before MISMATCH to avoid matching whitespace as a mismatch
 
+#class representing the tokens 
 class Token:
     def __init__(self, type, val, pos):
         self.type = type
@@ -69,7 +70,7 @@ class Token:
     def __repr__(self):
         return f'Token({self.type}, {repr(self.val)})'
     
-def tokenize(text):
+def tokenize(text): # tokenise input text 
     token_specification = TOKE_DEX
     tok_regex = '|'.join(f'(?P<{pair[0]}>{pair[1]})' for pair in token_specification)
     get_token = re.compile(tok_regex).match
@@ -78,7 +79,7 @@ def tokenize(text):
     gt = get_token(text)
     while gt is not None:
         type = gt.lastgroup
-        if type == 'SKIP':
+        if type == 'SKIP': # to ignore the whitespace
             pass
         elif type == 'MISMATCH':
             raise SyntaxError(f'Unexpected character')
@@ -89,25 +90,26 @@ def tokenize(text):
         gt = get_token(text, pos)
     return tokens
 
+#class to parse the tokens into a dictionary
 class Parser:
     def __init__(self, tokens):
         self.tokens = tokens
         self.pos = 0
 
-    def parse(self):
+    def parse(self): # start parsing i guess 
         return self.parse_object()
 
     def parse_object(self):
         obj = {}
-        self.expect('LBRACE')
-        if self.peek().type != 'RBRACE':
+        self.expect('LBRACE') # expect left brace
+        if self.peek().type != 'RBRACE': # in not empty object
             while True:
-                key = self.parse_string()
-                self.expect('COLON')
-                value = self.parse_value()
-                obj[key] = value
+                key = self.parse_string() # 
+                self.expect('COLON') 
+                value = self.parse_value() # parsre value
+                obj[key] = value 
                 if self.peek().type == 'COMMA':
-                    self.expect('COMMA')
+                    self.expect('COMMA') # for more pairs
                 else:
                     break
         self.expect('RBRACE')
@@ -116,54 +118,56 @@ class Parser:
     def parse_array(self):
         arr = []
         self.expect('LBRACKET')
-        if self.peek().type != 'RBRACKET':
+        if self.peek().type != 'RBRACKET': # if not empty array
             while True:
                 value = self.parse_value()
-                arr.append(value)
+                arr.append(value)   # add value to array
                 if self.peek().type == 'COMMA':
-                    self.expect('COMMA')
+                    self.expect('COMMA') # kinda same format as object parsing
                 else:
                     break
         self.expect('RBRACKET')
         return arr
 
     def parse_value(self):
-        token = self.peek()
+        token = self.peek() # I still need to wrrite this function 
         if token.type == 'LBRACE':
-            return self.parse_object()
+            return self.parse_object() # parse object
         elif token.type == 'LBRACKET':
-            return self.parse_array()
+            return self.parse_array() # parse array  
         elif token.type == 'STRING':
-            return self.parse_string()
+            return self.parse_string() # parse string
         elif token.type == 'NUMBER':
-            return self.parse_number()
+            return self.parse_number() # parse number
         elif token.type == 'COMPLEX':
-            return self.parse_complex()
+            return self.parse_complex() # parse complex number
         elif token.type == 'TRUE':
             self.expect('TRUE')
-            return True
+            return True # return true boolean
         elif token.type == 'FALSE':
             self.expect('FALSE')
-            return False
+            return False # return false boolean
         elif token.type == 'NULL':
             self.expect('NULL')
-            return None
+            return None # L bozo null
         else:
-            raise SyntaxError(f'Unexpected token: {token}')
+            raise SyntaxError(f'Unexpected token: {token}') # error handling 
         
     def parse_string(self):
-        token = self.expect('STRING')
-        return bytes(token.value[1:-1])
+        token = self.expect('STRING') # expect string token
+        return bytes(token.value[1:-1]) 
     
     def parse_number(self):
-        token = self.expect('NUMBER')
+        token = self.expect('NUMBER') # expect number token
         if '.' in token.value or 'e' in token.value or 'E' in token.value:
-            return float(token.value)
+            return float(token.value) # return float
         else:
-            return int(token.value)
+            return int(token.value) # return integer 
         
     def parse_complex(self):
-
+            # complex number parsing
+        token = self.expect('COMPLEX')
+        val = token.value
         # okay this will be fun 
         pass
 
