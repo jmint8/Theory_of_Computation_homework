@@ -49,7 +49,7 @@ def parse_file(file_name: str) -> dict:
 
 def main():
     ap = argparse.ArgumentParser(description=(DESCRIPTION + f"\nBy: {YOUR_NAME_HERE}"))
-    ap.add_argument('file_name', action='store', help='Name of the JSON file to read.')
+    ap.add_argument('file_name', action='store', help='Name of the JSON file to read')
     args = ap.parse_args()
 
     file_name = args.file_name
