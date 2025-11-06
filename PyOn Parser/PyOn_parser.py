@@ -7,13 +7,8 @@
 # F represents a float. B represents a boolean. W represents a string. C represents characters. G represents a group of digits. 
 # T represents a sign. R represents + or -. H represents a number (integer or float). N represents a number. 
 # J represents a complex number. Q represents the form of floats.
-
-
-
-
 """
-
-
+Grammar for PyOn Parser
 # S -> { X }
 # X -> X , X | Y : Z 
 # Y -> w
@@ -35,9 +30,7 @@
 # R -> + | -
 """
 
-
 DESCRIPTION = ''' A homebrew JSON parser which extends standard JSON with sets and complex numbers. '''
-
 
 import argparse
 import os.path
@@ -67,7 +60,6 @@ TOKE_DEX = [
 # COMPLEX must come before NUMBER to avoid partial matches
 # STRING must come before TRUE, FALSE, NULL to avoid partial matches
 # SKIP must come before MISMATCH to avoid matching whitespace as a mismatch
-
 
 class Token:
     def __init__(self, type, val, pos):
